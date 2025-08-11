@@ -1,0 +1,17 @@
+{
+  "detach_parser": false,
+  "dropatt": 0.1,
+  "dropout": 0.2,
+  "emb_size": 128,
+  "head_size": 32,
+  "config_type": "UDGNConfig",
+  "model_type": "udgn",
+  "n_dgn_layers": 4,
+  "n_lstm_layers": 3,
+  "nhead": 8,
+  "ntokens": 133,
+  "pad": 0,
+  "parser_dropout": 0.2,
+  "pos_emb": false,
+  "transformers_version": "4.44.1"
+}

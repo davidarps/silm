@@ -1,0 +1,7 @@
+data/
+models/
+.silm/
+*.zip
+*cppbackend*
+*pycache*
+*cpython*

@@ -1,0 +1,254 @@
+{
+  "version": "1.0",
+  "truncation": null,
+  "padding": null,
+  "added_tokens": [
+    {
+      "id": 0,
+      "content": "[PAD]",
+      "single_word": false,
+      "lstrip": false,
+      "rstrip": false,
+      "normalized": false,
+      "special": true
+    },
+    {
+      "id": 100,
+      "content": "[UNK]",
+      "single_word": false,
+      "lstrip": false,
+      "rstrip": false,
+      "normalized": false,
+      "special": true
+    },
+    {
+      "id": 101,
+      "content": "[CLS]",
+      "single_word": false,
+      "lstrip": false,
+      "rstrip": false,
+      "normalized": false,
+      "special": true
+    },
+    {
+      "id": 102,
+      "content": "[SEP]",
+      "single_word": false,
+      "lstrip": false,
+      "rstrip": false,
+      "normalized": false,
+      "special": true
+    },
+    {
+      "id": 103,
+      "content": "[MASK]",
+      "single_word": false,
+      "lstrip": false,
+      "rstrip": false,
+      "normalized": false,
+      "special": true
+    }
+  ],
+  "normalizer": {
+    "type": "BertNormalizer",
+    "clean_text": true,
+    "handle_chinese_chars": true,
+    "strip_accents": null,
+    "lowercase": false
+  },
+  "pre_tokenizer": {
+    "type": "WhitespaceSplit"
+  },
+  "post_processor": {
+    "type": "TemplateProcessing",
+    "single": [
+      {
+        "SpecialToken": {
+          "id": "[CLS]",
+          "type_id": 0
+        }
+      },
+      {
+        "Sequence": {
+          "id": "A",
+          "type_id": 0
+        }
+      },
+      {
+        "SpecialToken": {
+          "id": "[SEP]",
+          "type_id": 0
+        }
+      }
+    ],
+    "pair": [
+      {
+        "SpecialToken": {
+          "id": "[CLS]",
+          "type_id": 0
+        }
+      },
+      {
+        "Sequence": {
+          "id": "A",
+          "type_id": 0
+        }
+      },
+      {
+        "SpecialToken": {
+          "id": "[SEP]",
+          "type_id": 0
+        }
+      },
+      {
+        "Sequence": {
+          "id": "B",
+          "type_id": 1
+        }
+      },
+      {
+        "SpecialToken": {
+          "id": "[SEP]",
+          "type_id": 1
+        }
+      }
+    ],
+    "special_tokens": {
+      "[CLS]": {
+        "id": "[CLS]",
+        "ids": [
+          101
+        ],
+        "tokens": [
+          "[CLS]"
+        ]
+      },
+      "[SEP]": {
+        "id": "[SEP]",
+        "ids": [
+          102
+        ],
+        "tokens": [
+          "[SEP]"
+        ]
+      }
+    }
+  },
+  "decoder": {
+    "type": "WordPiece",
+    "prefix": "##",
+    "cleanup": true
+  },
+  "model": {
+    "type": "WordPiece",
+    "unk_token": "[UNK]",
+    "continuing_subword_prefix": "##",
+    "max_input_chars_per_word": 100,
+    "vocab": {
+      "[PAD]": 0,
+      "n": 1,
+      "nsg": 2,
+      "npl": 3,
+      "v": 4,
+      "vsg": 5,
+      "vpl": 6,
+      "UNUSED0": 7,
+      "UNUSED1": 8,
+      "UNUSED2": 9,
+      "UNUSED3": 10,
+      "UNUSED4": 11,
+      "UNUSED5": 12,
+      "UNUSED6": 13,
+      "UNUSED7": 14,
+      "UNUSED8": 15,
+      "UNUSED9": 16,
+      "UNUSED10": 17,
+      "UNUSED11": 18,
+      "UNUSED12": 19,
+      "UNUSED13": 20,
+      "UNUSED14": 21,
+      "UNUSED15": 22,
+      "UNUSED16": 23,
+      "UNUSED17": 24,
+      "UNUSED18": 25,
+      "UNUSED19": 26,
+      "UNUSED20": 27,
+      "UNUSED21": 28,
+      "UNUSED22": 29,
+      "UNUSED23": 30,
+      "UNUSED24": 31,
+      "UNUSED25": 32,
+      "UNUSED26": 33,
+      "UNUSED27": 34,
+      "UNUSED28": 35,
+      "UNUSED29": 36,
+      "UNUSED30": 37,
+      "UNUSED31": 38,
+      "UNUSED32": 39,
+      "UNUSED33": 40,
+      "UNUSED34": 41,
+      "UNUSED35": 42,
+      "UNUSED36": 43,
+      "UNUSED37": 44,
+      "UNUSED38": 45,
+      "UNUSED39": 46,
+      "UNUSED40": 47,
+      "UNUSED41": 48,
+      "UNUSED42": 49,
+      "UNUSED43": 50,
+      "UNUSED44": 51,
+      "UNUSED45": 52,
+      "UNUSED46": 53,
+      "UNUSED47": 54,
+      "UNUSED48": 55,
+      "UNUSED49": 56,
+      "UNUSED50": 57,
+      "UNUSED51": 58,
+      "UNUSED52": 59,
+      "UNUSED53": 60,
+      "UNUSED54": 61,
+      "UNUSED55": 62,
+      "UNUSED56": 63,
+      "UNUSED57": 64,
+      "UNUSED58": 65,
+      "UNUSED59": 66,
+      "UNUSED60": 67,
+      "UNUSED61": 68,
+      "UNUSED62": 69,
+      "UNUSED63": 70,
+      "UNUSED64": 71,
+      "UNUSED65": 72,
+      "UNUSED66": 73,
+      "UNUSED67": 74,
+      "UNUSED68": 75,
+      "UNUSED69": 76,
+      "UNUSED70": 77,
+      "UNUSED71": 78,
+      "UNUSED72": 79,
+      "UNUSED73": 80,
+      "UNUSED74": 81,
+      "UNUSED75": 82,
+      "UNUSED76": 83,
+      "UNUSED77": 84,
+      "UNUSED78": 85,
+      "UNUSED79": 86,
+      "UNUSED80": 87,
+      "UNUSED81": 88,
+      "UNUSED82": 89,
+      "UNUSED83": 90,
+      "UNUSED84": 91,
+      "UNUSED85": 92,
+      "UNUSED86": 93,
+      "UNUSED87": 94,
+      "UNUSED88": 95,
+      "UNUSED89": 96,
+      "UNUSED90": 97,
+      "UNUSED91": 98,
+      "UNUSED92": 99,
+      "[UNK]": 100,
+      "[CLS]": 101,
+      "[SEP]": 102,
+      "[MASK]": 103
+    }
+  }
+}
