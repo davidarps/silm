@@ -41,7 +41,7 @@ Example training commands can be found in `train_commands.sh`
 
 ## Evaluation
 
-Evaluation scripts are present in []
+Evaluation scripts are in [silm-eval](https://github.com/davidarps/silm-eval).
 
 ## Acknowledgements
 
