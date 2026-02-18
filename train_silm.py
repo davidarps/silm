@@ -698,6 +698,7 @@ def main():
                 )
         else:
             logger.info("Training new model from scratch")
+            logger.info("Using objective function: " + args.objective_function)
             if args.objective_function=="mlm":
                 model = AutoModelForMaskedLM.from_config(config, trust_remote_code=args.trust_remote_code)
             else: 
