@@ -60,6 +60,7 @@ from transformers.utils.versions import require_version
 
 # Instantiate UDGNConfig
 from silm.udgn import UDGN, UDGNConfig
+from silm.structformer import *
 from silm.structformer_in_parser import *
 from silm.gpst.config import *
 from silm.gpst.generative_r2d2_fast import *
@@ -78,6 +79,11 @@ GPSTConfig.register_for_auto_class()
 AutoConfig.register("gpst", GPSTConfig)
 GPST.register_for_auto_class()
 AutoModelForCausalLM.register(GPSTConfig, GPST)
+StructFormerConfig.register_for_auto_class()
+StructFormerModel.register_for_auto_class()
+AutoConfig.register("structformer", StructFormerConfig)
+AutoModelForMaskedLM.register(StructFormerConfig, StructFormerModel)
+
 
 # Will error if the minimal version of Transformers is not installed. Remove at your own risks.
 #check_min_version("4.46.0.dev0")
@@ -296,7 +302,7 @@ def parse_args():
     parser.add_argument(
         "--mixed_precision",
         type=str,
-        default=None,
+        default="fp16",
         help="Enabling mixed precision training"
     )
     parser.add_argument(
@@ -307,6 +313,11 @@ def parse_args():
         "--gpst_gen_loss",
         type=str,
         default="non_struct_loss_fullscale")
+    parser.add_argument(
+        "--track_param_and_gradient_properties", 
+        action="store_true",
+        help="Whether to track gradient and parameter norms, std.s, means etc."
+    )
     args = parser.parse_args()
 
     # Sanity checks
@@ -849,7 +860,7 @@ def main():
                                 accelerator.backward(loss)
 
                             steps_since_zero_grad+=1
-                            if steps_since_zero_grad==accelerator.gradient_accumulation_steps:
+                            if args.track_param_and_gradient_properties and steps_since_zero_grad==accelerator.gradient_accumulation_steps:
                                 log_params_and_grads = dict()
                                 for n, p in model.named_parameters():
                                     log_params_and_grads[f"{n}/para_mean"] = p.mean().item()
