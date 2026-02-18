@@ -16,7 +16,9 @@ True
 --gradient_accumulation_steps
 1
 --num_train_epochs
-500
+50
+--learning_rate
+5e-4
 --with_tracking
 --report_to
 tensorboard

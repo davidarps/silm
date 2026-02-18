@@ -4,7 +4,7 @@ This is the code for the paper **Understanding Syntactic Generalization in Struc
 
 ## Installation
 
-This project was developed with Python 3.10 and GCC 11.4. GCC is required only for compiling GPST-specific code
+This project was developed with Python 3.10 and GCC 13.2. GCC is required only for compiling GPST-specific code
 
 Install the requirements in `env/requirements.txt`, e.g. in a virtual environment: 
 
@@ -13,6 +13,13 @@ python3.10 -m venv .silm
 source .silm/bin/activate
 pip install --upgrade pip
 pip install -r requirements.txt
+```
+
+Compile GPST modules:
+
+```
+cd silm/gpst/
+python setup.py build_ext --inplace
 ```
 
 ## Data
