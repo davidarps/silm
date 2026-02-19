@@ -2,6 +2,7 @@
 from dataclasses import dataclass
 from typing import Optional
 
+from silm.pos_enc import *
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -35,6 +36,7 @@ class MaskedLTLMOutput(MaskedLMOutput):
     heads: Optional[torch.FloatTensor] = None
     tree_att_masks:  Optional[torch.FloatTensor] = None
     rels:  Optional[torch.FloatTensor] = None
+
 
 ##########################################
 def _get_activation_fn(activation):
@@ -371,7 +373,9 @@ class Transformer_Front(nn.Module):
 
     self.emb = nn.Embedding(ntokens, hidden_size)
     if pos_emb:
-      self.pos_emb = nn.Embedding(500, hidden_size)
+      #self.pos_emb = nn.Embedding(500, hidden_size)
+      print("Creating sinusoidal positional embeddings")
+      self.pos_emb = SinusoidalPositionalEmbedding(512, hidden_size, pad)
 
     self.layers = nn.ModuleList([
         TransformerLayer(hidden_size, nhead, hidden_size * 4, dropout,
