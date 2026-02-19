@@ -17,8 +17,6 @@ True
 1
 --num_train_epochs
 50
---learning_rate
-5e-4
 --with_tracking
 --report_to
 tensorboard

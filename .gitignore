@@ -6,3 +6,4 @@ models/
 *pycache*
 *cpython*
 hpc_scripts/
+hpc_jobs/
