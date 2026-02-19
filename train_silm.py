@@ -302,7 +302,7 @@ def parse_args():
     parser.add_argument(
         "--mixed_precision",
         type=str,
-        default="fp16",
+        default="bf16",
         help="Enabling mixed precision training"
     )
     parser.add_argument(
