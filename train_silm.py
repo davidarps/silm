@@ -54,6 +54,7 @@ from transformers import (
     DataCollatorForLanguageModeling,
     SchedulerType,
     get_scheduler,
+    RobertaForMaskedLM
 )
 from transformers.utils import check_min_version, send_example_telemetry
 from transformers.utils.versions import require_version
@@ -705,7 +706,7 @@ def main():
             else: 
                 model = AutoModelForCausalLM.from_config(config, trust_remote_code=args.trust_remote_code)
 
-        if config.config_type=="RoBERTaConfig" and config.position_embedding_type == "sinusoidal":
+        if isinstance(model, RobertaForMaskedLM) and getattr(config, "position_embedding_type", None) == "sinusoidal":
             print("Build sinusoidal embeddings")
             model.roberta.embeddings = RobertaEmbeddingsWithSinusoidal(config)
 

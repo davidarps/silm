@@ -28,3 +28,5 @@ tensorboard
 bf16
 --learning_rate
 5e-4
+--num_warmup_steps
+1000
