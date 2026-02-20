@@ -20,7 +20,7 @@
     "num_hidden_layers": 6,
     "pad": 0,
     "pad_token_id": 0,
-    "position_embedding_type": "absolute",
+    "position_embedding_type": "sinusoidal",
     "torch_dtype": "float32",
     "transformers_version": "4.44.1",
     "type_vocab_size": 2,

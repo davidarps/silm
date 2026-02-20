@@ -66,6 +66,7 @@ from silm.gpst.config import *
 from silm.gpst.generative_r2d2_fast import *
 from silm.gpst.r2d2_insideoutside import *
 from silm.gpst.data_collator import *
+from silm.pos_enc import RobertaEmbeddingsWithSinusoidal
 
 UDGNConfig.register_for_auto_class()
 UDGN.register_for_auto_class()
@@ -703,6 +704,11 @@ def main():
                 model = AutoModelForMaskedLM.from_config(config, trust_remote_code=args.trust_remote_code)
             else: 
                 model = AutoModelForCausalLM.from_config(config, trust_remote_code=args.trust_remote_code)
+
+        if config.config_type=="RoBERTaConfig" and config.position_embedding_type == "sinusoidal":
+            print("Build sinusoidal embeddings")
+            model.roberta.embeddings = RobertaEmbeddingsWithSinusoidal(config)
+
 
         logger.info(f"Training a {model._get_name()} with {model.num_parameters()} parameters")
         logger.info(f"Training a {model._get_name()} with the following config: ")

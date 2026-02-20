@@ -3,6 +3,7 @@ import torch.nn as nn
 import math
 from torch import Tensor
 from typing import Any
+from transformers.models.roberta.modeling_roberta import RobertaEmbeddings
 
 class SinusoidalPositionalEmbedding(nn.Embedding):
     """
@@ -76,3 +77,16 @@ class SinusoidalPositionalEmbedding(nn.Embedding):
             self.make_weight(max_pos, self.embedding_dim, self.padding_idx)
         positions = self.make_positions(input, self.padding_idx)
         return super().forward(positions)
+    
+
+class RobertaEmbeddingsWithSinusoidal(RobertaEmbeddings):
+    def __init__(self, config):
+        super().__init__(config)
+        
+        self.position_embeddings = SinusoidalPositionalEmbedding(
+            num_positions=config.max_position_embeddings,
+            embedding_dim=config.hidden_size,
+            padding_idx=config.pad_token_id
+        )
+
+
