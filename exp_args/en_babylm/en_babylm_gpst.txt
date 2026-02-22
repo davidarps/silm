@@ -20,9 +20,15 @@ True
 --gradient_accumulation_steps
 1
 --num_train_epochs
-500
+75
 --objective_function
 alm
 --with_tracking
 --report_to
 tensorboard
+--mixed_precision
+bf16
+--learning_rate
+5e-4
+--num_warmup_steps
+1000
