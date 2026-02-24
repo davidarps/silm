@@ -1,0 +1,81 @@
+{
+    "r2d2": {
+        "architectures": [
+          "Bert"
+        ],
+        "model_type": "bert",
+        "attention_probs_dropout_prob": 0.1,
+        "hidden_act": "gelu",
+        "hidden_dropout_prob": 0.1,
+        "hidden_size": 256,
+        "const_size": 256,
+        "initializer_range": 0.02,
+        "intermediate_size": 256,
+        "score_dim": 256,
+        "max_role_embeddings": 4,
+        "num_attention_heads": 8,
+        "type_vocab_size": 2,
+        "vocab_size": 10000,
+        "encoder_num_hidden_layers": 3,
+        "decoder_num_hidden_layers": 1,
+        "pairwise_label_num": 2,
+        "pad_token_id": 1,
+        "bos_token_id": 0,
+        "eos_token_id": 2,
+        "reduce_token_id": 50257,
+        "cls_token_id": 101,
+        "sum_token_id": 7,
+        "mask_token_id": 103,
+        "nsp_token_id": 8,
+        "lr_token_id": 9,
+        "rr_token_id": 10,
+        "tree_mask_token_id": 12,
+        "policy_token_id": 6,
+        "window_size": 2,
+        "enable_self_attention": true,
+        "parser_input_dim": 256,
+        "parser_hidden_dim": 256,
+        "parser_num_layers": 3,
+        "parser_max_len":96,
+        "parser_nhead":8,
+        "parser_chunked": true,
+        "ext_vocab_size": -1
+    },
+    "gpt": {
+        "activation_function": "gelu_new",
+        "architectures": [
+          "GPT2LMHeadModel"
+        ],
+        "attn_pdrop": 0.1,
+        "dense_hidden_factor": 1,
+        "bos_token_id": 0,
+        "embd_pdrop": 0.1,
+        "eos_token_id": 2,
+        "initializer_range": 0.02,
+        "layer_norm_epsilon": 1e-05,
+        "model_type": "gpt2",
+        "hidden_size": 256,
+        "max_position_embeddings": 96,
+        "n_ctx": 96,
+        "n_embd": 256,
+        "n_head": 8,
+        "n_inner": 512,
+        "n_layer": 8,
+        "n_positions": 96,
+        "resid_pdrop": 0.1,
+        "summary_activation": null,
+        "summary_first_dropout": 0.1,
+        "summary_proj_to_labels": true,
+        "summary_type": "cls_index",
+        "summary_use_proj": true,
+        "task_specific_params": {
+          "text-generation": {
+            "do_sample": true,
+            "max_length": 50
+          }
+        },
+        "vocab_size": 10000,
+        "output_hidden_states": "True",
+        "action_layer_num": 3
+    }
+}
