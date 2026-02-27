@@ -21,7 +21,7 @@
     "num_hidden_layers": 6,
     "pad": 1,
     "pad_token_id": 1,
-    "position_embedding_type": "sinusoidal",
+    "position_embedding_type": "absolute",
     "torch_dtype": "float32",
     "transformers_version": "4.44.1",
     "type_vocab_size": 2,
